@@ -1,6 +1,7 @@
 package br.unicentro.pkubackend.dto;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,21 +14,30 @@ public class User {
 
     private String name;
     private String email;
-    private Date birthDate;
+    private LocalDate birthDate;
     private String password;
+    private long weight;
 
-    public User(String name, String email, Date birthDate, String password) {
+    public User(String name, String email, LocalDate birthDate, String password) {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
         this.password = password;
     }
 
+    public User() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 }
