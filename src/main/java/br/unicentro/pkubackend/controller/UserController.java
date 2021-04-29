@@ -1,6 +1,8 @@
 package br.unicentro.pkubackend.controller;
 
+import br.unicentro.pkubackend.dto.LoginForm;
 import br.unicentro.pkubackend.dto.Product;
+import br.unicentro.pkubackend.dto.User;
 import br.unicentro.pkubackend.service.ProductService;
 import br.unicentro.pkubackend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,20 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces= MediaType.APPLICATION_JSON_VALUE)
+    public long addNewUser(@RequestBody User user) {
+        return userService.saveUser(user);
+    }
+
+
     @GetMapping("/{id}")
     public long returnProductId(@PathVariable(value = "id") long id) {
-
        return id;
+    }
+
+    @PostMapping(path = "/login", consumes = MediaType.APPLICATION_JSON_VALUE,produces= MediaType.APPLICATION_JSON_VALUE)
+    public List<User> requestLogin(@RequestBody LoginForm loginForm) {
+        return userService.requestLoginAcess(loginForm);
     }
 
 //    @GetMapping("/all")
@@ -30,10 +42,6 @@ public class UserController {
 //
 //    }
 //
-//    @PostMapping(path = "/add", consumes = MediaType.APPLICATION_JSON_VALUE,produces= MediaType.APPLICATION_JSON_VALUE)
-//    public long returnProductId(@RequestBody Product product) {
-//
-//        return productService.saveProduct(product);
-//    }
+
 
 }
