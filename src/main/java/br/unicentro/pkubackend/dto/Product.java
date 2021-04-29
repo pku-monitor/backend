@@ -1,5 +1,7 @@
 package br.unicentro.pkubackend.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,6 +9,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ApiModelProperty(position = 1, required = true, hidden=true, notes = "Removendo da documentação do Swagger")
     private Long id;
 
     private String name;
