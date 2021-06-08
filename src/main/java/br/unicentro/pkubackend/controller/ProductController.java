@@ -2,7 +2,6 @@ package br.unicentro.pkubackend.controller;
 
 import br.unicentro.pkubackend.dto.Product;
 import br.unicentro.pkubackend.service.ProductService;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public long returnProductId(@PathVariable(value = "id") long id) {
+    public Product returnProductId(@PathVariable(value = "id") long id) {
        return productService.returnProductById(id);
     }
 

@@ -13,8 +13,8 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public long returnProductById(long id) {
-        return id;
+    public Product returnProductById(long id) {
+        return productRepository.getOne(id);
     }
 
     public List<Product> getAllProducts (){
